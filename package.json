@@ -1,5 +1,8 @@
+
 {
-  "dependencies": {
-    "chart.js": "^4.5.1"
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "svelte-check": "^3.0.0",
+    "@tsconfig/svelte": "^5.0.0"
   }
 }
