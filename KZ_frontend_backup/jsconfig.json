@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "5.0",
+   "paths": { "$lib": ["./src/lib"], "$lib/*": ["./src/lib/*"] }
+  },
+  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
+}

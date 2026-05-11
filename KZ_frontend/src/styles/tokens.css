@@ -1,0 +1,326 @@
+/**
+ * Knowledge Zakat — Design Tokens
+ * ================================
+ * Single source of truth for colors, typography, spacing, motion.
+ *
+ * Palette decisions:
+ *  - BRAND: Navy 900 (#1E3A8A) — academic, trustworthy
+ *  - BG: Blue 100 (#DBEAFE) — same hue family as brand
+ *  - SURFACE: White cards floating on the blue page
+ *  - INPUT FILL: Blue 50 — keeps inputs in the family but distinct
+ *  - SEMANTIC: green/red/amber/blue at 600 stops, with their 50 stops
+ *    for soft fills and 900 stops for strong text on those fills.
+ *
+ * Motion decisions:
+ *  - Standard duration: 220ms (sweet spot between snappy and smooth)
+ *  - Standard easing: cubic-bezier(0.4, 0, 0.2, 1) — Material's
+ *    "standard" curve, visually balanced for both enter and exit.
+ *  - Press duration: 80ms — fast enough to feel responsive when
+ *    the user clicks a button.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ===== Brand (Navy / Royal Blue) ===================== */
+  --kz-brand-50:  #EFF6FF;
+  --kz-brand-100: #DBEAFE;
+  --kz-brand-200: #BFDBFE;
+  --kz-brand-300: #93C5FD;
+  --kz-brand-400: #60A5FA;
+  --kz-brand-500: #3B82F6;
+  --kz-brand-600: #2563EB;
+  --kz-brand-700: #1D4ED8;
+  --kz-brand-800: #1E40AF;
+  --kz-brand-900: #1E3A8A;
+  --kz-brand-950: #172554;
+
+  /* Convenience aliases */
+  --kz-brand:        var(--kz-brand-900);
+  --kz-brand-soft:   var(--kz-brand-100);
+  --kz-brand-hover:  var(--kz-brand-950);
+  --kz-brand-strong: var(--kz-brand-800);
+
+  /* ===== Page & surfaces =============================== */
+  --kz-bg-page:     var(--kz-brand-100);
+  --kz-bg-elevated: #FFFFFF;
+  --kz-bg-input:    var(--kz-brand-50);
+  --kz-bg-muted:    #F8FAFC;
+  --kz-bg-hover:    var(--kz-brand-50);
+
+  /* ===== Borders ====================================== */
+  --kz-border:        var(--kz-brand-200);
+  --kz-border-strong: var(--kz-brand-300);
+  --kz-border-focus:  var(--kz-brand-900);
+  --kz-border-muted:  #E2E8F0;
+  --kz-border-width:  1.5px;
+
+  /* ===== Text colors ================================== */
+  --kz-text-primary:   #1E293B;
+  --kz-text-secondary: #475569;
+  --kz-text-muted:     #94A3B8;
+  --kz-text-inverse:   #FFFFFF;
+  --kz-text-brand:     var(--kz-brand-900);
+
+  /* ===== Status: Success (green) ====================== */
+  --kz-success-50:  #DCFCE7;
+  --kz-success-100: #BBF7D0;
+  --kz-success-500: #22C55E;
+  --kz-success-600: #16A34A;
+  --kz-success-700: #15803D;
+  --kz-success-900: #14532D;
+
+  /* ===== Status: Error/Danger (red) =================== */
+  --kz-error-50:  #FEE2E2;
+  --kz-error-100: #FECACA;
+  --kz-error-500: #EF4444;
+  --kz-error-600: #DC2626;
+  --kz-error-700: #B91C1C;
+  --kz-error-900: #7F1D1D;
+
+  /* ===== Status: Warning (amber) ====================== */
+  --kz-warning-50:  #FEF3C7;
+  --kz-warning-100: #FDE68A;
+  --kz-warning-500: #F59E0B;
+  --kz-warning-600: #D97706;
+  --kz-warning-700: #B45309;
+  --kz-warning-900: #78350F;
+
+  /* ===== Status: Info (blue) ========================== */
+  --kz-info-50:  var(--kz-brand-50);
+  --kz-info-100: var(--kz-brand-100);
+  --kz-info-500: var(--kz-brand-500);
+  --kz-info-600: var(--kz-brand-600);
+  --kz-info-700: var(--kz-brand-700);
+  --kz-info-900: var(--kz-brand-900);
+
+  /* ===== Typography =================================== */
+  --kz-font-sans: 'IBM Plex Sans Arabic', system-ui, -apple-system, sans-serif;
+
+  --kz-text-xs:   0.75rem;
+  --kz-text-sm:   0.875rem;
+  --kz-text-base: 1rem;
+  --kz-text-lg:   1.125rem;
+  --kz-text-xl:   1.25rem;
+  --kz-text-2xl:  1.5rem;
+  --kz-text-3xl:  1.875rem;
+  --kz-text-4xl:  2.25rem;
+
+  --kz-font-medium:   500;
+  --kz-font-semibold: 600;
+  --kz-font-bold:     700;
+
+  /* ===== Border radius ================================ */
+  --kz-radius-sm:    0.75rem;   /* 12px - chips, small elements */
+  --kz-radius-md:    1rem;      /* 16px - inputs, badges */
+  --kz-radius-lg:    1.5rem;    /* 24px - buttons, small cards */
+  --kz-radius-xl:    2rem;      /* 32px - main cards */
+  --kz-radius-2xl:   2.5rem;    /* 40px - hero cards, modals */
+  --kz-radius-3xl:   3rem;      /* 48px - special cards */
+  --kz-radius-full:  9999px;    /* circular */
+
+  /* ===== Shadows (warm, brand-tinted) ================= */
+  --kz-shadow-sm:    0 1px 2px 0 rgba(30, 58, 138, 0.05);
+  --kz-shadow-md:    0 4px 12px -2px rgba(30, 58, 138, 0.08);
+  --kz-shadow-lg:    0 8px 24px -8px rgba(30, 58, 138, 0.15);
+  --kz-shadow-xl:    0 16px 40px -8px rgba(30, 58, 138, 0.20);
+  --kz-shadow-glow:  0 0 0 3px rgba(30, 58, 138, 0.1);
+
+  /* Colored shadows for action buttons */
+  --kz-shadow-brand:   0 6px 20px -4px rgba(30, 58, 138, 0.35);
+  --kz-shadow-success: 0 6px 20px -4px rgba(22, 163, 74, 0.35);
+  --kz-shadow-error:   0 6px 20px -4px rgba(220, 38, 38, 0.35);
+  --kz-shadow-warning: 0 6px 20px -4px rgba(217, 119, 6, 0.35);
+
+  /* ===== Motion ======================================= */
+  --kz-duration-fast:   80ms;     /* press feedback */
+  --kz-duration-normal: 220ms;    /* standard transitions */
+  --kz-duration-slow:   320ms;    /* page transitions */
+
+  --kz-ease:      cubic-bezier(0.4, 0, 0.2, 1);     /* standard */
+  --kz-ease-in:   cubic-bezier(0.4, 0, 1, 1);       /* enter */
+  --kz-ease-out:  cubic-bezier(0, 0, 0.2, 1);       /* exit */
+  --kz-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1); /* playful */
+}
+
+/* ===== Global resets / base ============================= */
+html, body {
+  font-family: var(--kz-font-sans);
+  background-color: var(--kz-bg-page);
+  color: var(--kz-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: var(--kz-font-sans);
+}
+
+/* Custom focus ring for keyboard nav (accessibility) */
+*:focus-visible {
+  outline: 2px solid var(--kz-brand-900);
+  outline-offset: 2px;
+}
+
+/* Clean scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--kz-brand-200);
+  border-radius: 4px;
+  transition: background var(--kz-duration-normal) var(--kz-ease);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--kz-brand-400);
+}
+
+/* ===== Reusable utility classes ========================= */
+
+/* Card with the signature "lift + shadow + side bar" hover */
+.kz-card {
+  background: var(--kz-bg-elevated);
+  border: var(--kz-border-width) solid var(--kz-border);
+  border-radius: var(--kz-radius-xl);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--kz-duration-normal) var(--kz-ease),
+    border-color var(--kz-duration-normal) var(--kz-ease),
+    box-shadow var(--kz-duration-normal) var(--kz-ease);
+}
+
+/* The animated side bar accent */
+.kz-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--kz-brand-900);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--kz-duration-normal) var(--kz-ease);
+}
+
+.kz-card.is-interactive:hover {
+  transform: translateY(-3px);
+  border-color: var(--kz-border-strong);
+  box-shadow: var(--kz-shadow-lg);
+}
+
+.kz-card.is-interactive:hover::before {
+  transform: scaleY(1);
+}
+
+/* Smooth, tactile press for any button-like element */
+.kz-pressable {
+  transition:
+    transform var(--kz-duration-normal) var(--kz-ease),
+    background-color var(--kz-duration-normal) var(--kz-ease),
+    box-shadow var(--kz-duration-normal) var(--kz-ease);
+}
+.kz-pressable:hover {
+  transform: translateY(-1px);
+}
+.kz-pressable:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: var(--kz-duration-fast);
+}
+
+/* Input focus glow ring */
+.kz-focusable {
+  transition:
+    border-color var(--kz-duration-normal) var(--kz-ease),
+    background-color var(--kz-duration-normal) var(--kz-ease),
+    box-shadow var(--kz-duration-normal) var(--kz-ease);
+}
+.kz-focusable:hover {
+  border-color: var(--kz-border-strong);
+}
+.kz-focusable:focus,
+.kz-focusable:focus-visible {
+  border-color: var(--kz-brand-900);
+  background: var(--kz-bg-elevated);
+  box-shadow: var(--kz-shadow-glow);
+  outline: none;
+}
+
+/* Hide scrollbar but keep scroll */
+.kz-scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+.kz-scroll-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes kz-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes kz-slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes kz-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes kz-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes kz-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes kz-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+
+@keyframes kz-blob-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(30px, -30px) scale(1.1); }
+  66%      { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes kz-blob-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(-25px, 30px) scale(0.95); }
+  66%      { transform: translate(25px, -15px) scale(1.05); }
+}
+
+.kz-anim-fade-in   { animation: kz-fade-in var(--kz-duration-slow) var(--kz-ease) both; }
+.kz-anim-slide-up  { animation: kz-slide-up var(--kz-duration-slow) var(--kz-ease) both; }
+.kz-anim-scale-in  { animation: kz-scale-in var(--kz-duration-normal) var(--kz-ease) both; }
+.kz-anim-spin      { animation: kz-spin 1s linear infinite; }
+.kz-anim-pulse     { animation: kz-pulse 2s var(--kz-ease) infinite; }
+
+/* Background blobs for hero/auth pages */
+.kz-blob-1 { animation: kz-blob-1 14s var(--kz-ease) infinite; }
+.kz-blob-2 { animation: kz-blob-2 18s var(--kz-ease) infinite; }
+
+/* Skeleton shimmer */
+.kz-skeleton {
+  background: linear-gradient(
+    110deg,
+    var(--kz-brand-100) 8%,
+    var(--kz-brand-50) 18%,
+    var(--kz-brand-100) 33%
+  );
+  background-size: 200% 100%;
+  animation: kz-shimmer 1.6s linear infinite;
+  border-radius: var(--kz-radius-md);
+}
